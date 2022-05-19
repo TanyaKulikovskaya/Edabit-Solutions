@@ -152,4 +152,21 @@ const incrementer = (nums) => {
 	  result.push(+current);
 	}
 	return result;
-  }
+}
+
+/* Write a generic function chainer that takes a starting value, and an array of functions to execute on it.
+The input for each function is the output of the previous function (except the first function, which takes the starting value as its input).
+Return the final value after execution is complete. */
+
+const chain = (input, fs) => {fs.reduce((acc, fn) => fn(acc), input)}
+
+/* Return the number (count) of vowels in the given string.*/
+
+const getCount = (str) => {
+	let vowelsCount = 0;
+	let vowels = ['a', 'e', 'i', 'o', 'u'];
+	for (let char of str) {
+	  if(vowels.includes(char)) vowelsCount++
+	}
+	return vowelsCount;
+}
