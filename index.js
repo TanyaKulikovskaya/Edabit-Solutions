@@ -139,3 +139,17 @@ function multiTable(number) {
 	}
 	return arrOfRow.join('\n');
 }
+
+/* Given an input of an array of digits, return the array with each digit incremented by its position in the array: 
+the first digit will be incremented by 1, the second digit by 2, etc.
+Your result can only contain single digit numbers,
+so if adding a digit with its position gives you a multiple-digit number, only the last digit of the number should be returned. */
+
+const incrementer = (nums) => { 
+	let result = [];
+	for (let i = 0; i < nums.length; i++) {
+	  let current = ((nums[i] + i + 1) + '').slice(-1);
+	  result.push(+current);
+	}
+	return result;
+  }
