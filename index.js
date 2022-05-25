@@ -170,3 +170,31 @@ const getCount = (str) => {
 	}
 	return vowelsCount;
 }
+
+/* Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals,
+saying each of the following phrases each time a petal was torn:
+    I love you
+    a little
+    a lot
+    passionately
+    madly
+    not at all
+When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+Your goal in this kata is to determine which phrase the girls would say for a flower of a given number of petals, where nb_petals > 0. */
+
+const howMuchILoveYou = (nbPetals) => {
+    // your code
+  const glossary =  ["not at all", "I love you", "a little", "a lot", "passionately", "madly"];
+  return glossary[nbPetals % 6]
+}
+
+/* The Western Suburbs Croquet Club has two categories of membership, Senior and Open.
+They would like your help with an application form that will tell prospective members which category they will be placed.
+To be a senior, a member must be at least 55 years old and have a handicap greater than 7.
+Input will consist of a list of pairs. Each pair contains information for a single potential member.
+Information consists of an integer for the person's age and an integer for the person's handicap.
+Output will consist of a list of string values stating whether the respective member is to be placed in the senior or open category. */
+
+const openOrSenior = (data) => {
+	return data.map((item) => item[0] >= 55 && item[1] > 7 ? 'Senior' : 'Open')
+}
