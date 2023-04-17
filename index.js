@@ -198,3 +198,52 @@ Output will consist of a list of string values stating whether the respective me
 const openOrSenior = (data) => {
 	return data.map((item) => item[0] >= 55 && item[1] > 7 ? 'Senior' : 'Open')
 }
+
+/* Complete the function power_of_two/powerOfTwo (or equivalent, depending on your language) that determines
+if a given non-negative integer is a power of two. */
+
+function isPowerOfTwo(n){
+    return Number.isInteger(Math.log2(n));
+}
+
+/* Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings,
+ordered from shortest to longest. */
+
+function sortByLength (array) {
+  return array.sort((a, b) => a.length -b.length)
+};
+
+
+/* Create a function named rotate() that accepts a string argument
+and returns an array of strings with each letter from the input string being rotated to the end. */
+
+function rotate(str){
+  const result = [];
+  for (let i = 0; i < str.length; i++) {
+    const tempStr = str.slice(i+1).concat(str.slice(0, i+1))
+	result.push(tempStr);
+}
+  return result;
+}
+
+/* You'll have a function called "sortEmotions" that will return an array of emotions sorted.
+It has two parameters, the first parameter called "arr" will expect an array of emotions where an emotion will be one of the following:
+
+:D -> Super Happy
+:) -> Happy
+:| -> Normal
+:( -> Sad
+T_T -> Super Sad
+
+And the second parameter is called "order", if this parameter is true then the order of the emotions will be descending
+(from Super Happy to Super Sad) if it's false then it will be ascending (from Super Sad to Super Happy)
+
+The array could be empty, in that case return the same empty array. */
+
+function sortEmotions(arr, order) {
+	if (arr.length > 0) {
+		const glossary =  [ ':D', ':)', ':|', ':(', 'T_T' ];
+		return [...arr].sort((a, b) => glossary.indexOf(order ? a : b)  -  glossary.indexOf(order ? b : a))
+	}
+	return arr;
+}
