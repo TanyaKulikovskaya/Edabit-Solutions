@@ -310,3 +310,79 @@ function keepOrder(ary, val) {
 	}
 }
 
+/* You're re-designing a blog, and the blog's posts have the Weekday Month Day,
+time format for showing the date and time when a post was made, e.g., Friday May 2, 7pm.
+You're running out of screen real estate, and on some pages you want to display a shorter format, Weekday Month Day that omits the time.
+Write a function that takes the website date/time in its original string format and returns the shortened format.
+
+Input
+Input will always be a string, e.g., "Friday May 2, 7pm". 
+
+Output
+Output will be the shortened string, e.g., "Friday May 2". */
+
+function shortenToDate(longDate) {
+  return longDate.slice(0, longDate.indexOf(","))
+}
+
+/* Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order. */
+
+function flattenAndSort(array) {
+  return array.flat().sort((a, b) => a - b)
+}
+
+
+/* There is an array with some numbers. All numbers are equal except for one. Try to find it! */
+
+function findUniq(arr) {
+  const map = {};
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    if (map[num]) {
+      map[num] += 1
+    } else map[num] = 1
+  }
+  return +Object.keys(map).filter((item) => map[item] === 1)[0]
+}
+
+/* Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+
+Rules for a smiling face:
+
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned. */
+
+function countSmileys(arr) {
+  if (arr.length === 0) return 0;
+  
+  const eyes = [':', ';'];
+  const nose = ['-', '~'];
+  const mouth = [')', 'D'];
+  
+  
+  const result = [];
+  
+  arr.forEach((item) => {
+    let face = {};
+    for (const char of item) {
+      if (eyes.includes(char)) {
+        face.isValidEyes = true;
+      }
+      if (nose.includes(char)) {
+        face.isValidNose = true
+      }
+      if (mouth.includes(char)) {
+        face.isValidMouth = true;
+      }
+    }
+    if (face.isValidEyes && face.isValidMouth) {
+      if (!face.isValidNose && item.length === 2 || face.isValidNose && item.length === 3) {
+        result.push(face);
+      }
+    }
+  
+  })
+  return result.length;
+}
