@@ -386,3 +386,79 @@ function countSmileys(arr) {
   })
   return result.length;
 }
+
+/* Given an object (meet) containing team member names as keys, and their happiness rating out of 10 as the value,
+you need to assess the overall happiness rating of the group. If <= 5, return 'Get Out Now!'. Else return 'Nice Work Champ!'.
+Happiness rating will be total score / number of people in the room.
+Note that your boss is in the room (boss), their score is worth double it's face value (but they are still just one person!). */
+
+function outed(meet, boss){
+	const total = Object.values(meet).reduce((acc, item) => acc + item, meet[boss]);
+	const average = total/Object.keys(meet).length;
+	return average <= 5 ?  'Get Out Now!' : 'Nice Work Champ!';
+}
+
+/* YouTube had a like and a dislike button, which allowed users to express their opinions about particular content.
+It was set up in such a way that you cannot like and dislike a video at the same time.
+There are two other interesting rules to be noted about the interface:
+Pressing a button, which is already active, will undo your press.
+If you press the like button after pressing the dislike button, the like button overwrites the previous "Dislike" state.
+The same is true for the other way round.
+
+Task
+Create a function that takes in a list of button inputs and returns the final state. */
+
+function likeOrDislike(buttons) {
+  if (buttons.length === 0) return 'Nothing';
+  let res = buttons[0];
+  for (let i = 1; i < buttons.length; i++) {
+    if (res === buttons[i]) res = 'Nothing';
+    else res = buttons[i];
+  }
+  return res;
+}
+
+/* Complete the function that returns the lyrics for the song 99 Bottles of Beer as an array of strings:
+each line should be a separate element - see the example at the bottom.
+
+Note: in order to avoid hardcoded solutions, the size of your code is limited to 1000 characters
+
+Lyrics
+99 bottles of beer on the wall, 99 bottles of beer.
+Take one down and pass it around, 98 bottles of beer on the wall.
+
+98 bottles of beer on the wall, 98 bottles of beer.
+Take one down and pass it around, 97 bottles of beer on the wall.
+
+...and so on...
+
+3 bottles of beer on the wall, 3 bottles of beer.
+Take one down and pass it around, 2 bottles of beer on the wall.
+
+2 bottles of beer on the wall, 2 bottles of beer.
+Take one down and pass it around, 1 bottle of beer on the wall.
+
+1 bottle of beer on the wall, 1 bottle of beer.
+Take one down and pass it around, no more bottles of beer on the wall.
+
+No more bottles of beer on the wall, no more bottles of beer.
+Go to the store and buy some more, 99 bottles of beer on the wall. */
+
+var sing = function () {
+  const song = [];
+  let count = 99;
+  while (count > 0) {
+    let firstStr = count === 1
+    ?  `${count} bottle of beer on the wall, ${count} bottle of beer.`
+    : `${count} bottles of beer on the wall, ${count} bottles of beer.`
+    let secondStr = count === 1
+    ?  'Take one down and pass it around, no more bottles of beer on the wall.'
+    : count === 2
+    ? `Take one down and pass it around, ${count -1} bottle of beer on the wall.`
+    : `Take one down and pass it around, ${count -1} bottles of beer on the wall.`
+    song.push(firstStr, secondStr);
+    count -= 1;
+  }
+  song.push('No more bottles of beer on the wall, no more bottles of beer.', 'Go to the store and buy some more, 99 bottles of beer on the wall.');
+  return song;
+};
